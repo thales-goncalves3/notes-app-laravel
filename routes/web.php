@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [NotesController::class, 'index']);
+Route::get('/', [NotesController::class, 'index'])->name('dashboard');
 
 Route::get('/nova-tarefa', function () {
     return view('criar-tarefa');
 });
+
+Route::post('/', [NotesController::class, 'insertNote'])->name('dashboard');

@@ -14,4 +14,16 @@ class NotesController extends Controller
 
         return view('dashboard', ['notes' => $notes]);
     }
+
+    public function insertNote(Request $request){
+        $note = new Notes;
+
+        $note->title = $request->title;
+        $note->description = $request->description;
+
+        $note->save();
+
+
+        return redirect()->route('dashboard');
+    }
 }
