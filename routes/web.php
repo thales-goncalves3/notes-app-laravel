@@ -20,4 +20,8 @@ Route::get('/nova-tarefa', function () {
     return view('criar-tarefa');
 });
 
+Route::put('tarefa/{id}', [NotesController::class, 'updateNote'])->name('update.tarefa');
+
+Route::get('tarefa/{id}', [NotesController::class, 'findNoteById'])->name('tarefa');
+
 Route::post('/', [NotesController::class, 'insertNote'])->name('dashboard');

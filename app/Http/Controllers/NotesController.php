@@ -26,4 +26,21 @@ class NotesController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function findNoteById($id){
+        $note = Notes::find($id);
+
+        return view('tarefa', ['note' => $note]);
+    }
+
+    public function updateNote(Request $request, $id){
+        $note = Notes::find($id);
+
+        $note->title = $request->title;
+        $note->description = $request->description;
+
+        $note->save();
+
+        return redirect()->route('dashboard');
+    }
 }
