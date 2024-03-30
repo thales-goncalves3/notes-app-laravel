@@ -11,7 +11,7 @@
         <div class="max-w-md mx-auto bg-white shadow-md rounded-md overflow-hidden m-8">
             <div class="px-6 py-4">
                 <h2 class="text-xl font-semibold mb-4">Editar Nota</h2>
-                <form method="POST" action="{{ route('update.tarefa', ['id' => $note->id]) }}">
+                <form method="POST" action="{{ route('update.note', ['id' => $note->id]) }}">
                     @csrf
                     @method('PUT')
                     <div class="mb-4">

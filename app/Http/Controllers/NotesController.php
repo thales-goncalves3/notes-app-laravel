@@ -43,4 +43,12 @@ class NotesController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function deleteNote($id){
+        $note = Notes::find($id);
+
+        $note->delete();
+
+        return redirect()->route('dashboard');
+    }
 }
