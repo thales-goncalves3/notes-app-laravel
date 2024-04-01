@@ -12,6 +12,8 @@ class NotesController extends Controller
     public function index(){
         $notes = Notes::all();
 
+        // $notes = Notes::where('status', '=', 0)->get();
+
         return view('dashboard', ['notes' => $notes]);
     }
 
@@ -20,6 +22,7 @@ class NotesController extends Controller
 
         $note->title = $request->title;
         $note->description = $request->description;
+        $note->status = false;
 
         $note->save();
 

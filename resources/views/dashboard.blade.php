@@ -5,45 +5,40 @@
     @include('layouts.head')
 </head>
 
-<body class="flex flex-col h-screen">
-    @include('layouts.header')
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 content-start flex-1 bg-gray-200">
-        @foreach ($notes as $note)
-        <div class="bg-white shadow-md rounded-lg overflow-hidden m-5">
-            <div class="px-4 py-2">
-                <h2 class="text-lg font-semibold text-gray-800">{{ $note->title }}</h2>
-                <p class="text-sm text-gray-600 mt-1">{{ $note->description }}</p>
-            </div>
-            <div class="px-4 py-3 bg-gray-100 flex justify-end">
-                <a href="{{ route('tarefa', ['id' => $note->id]) }}">
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center mr-2">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2"></path>
-                        </svg>
-                        <span class="ml-1">Editar</span>
-                    </button>
-                </a>
-                <form method="POST" action="{{ route('delete.note', ['id' => $note->id]) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                        <span class="ml-1">Excluir</span>
-                    </button>
-                </form>
+@include('layouts.header')
 
+<div class="flex flex-col h-screen bg-blue-900"> <!-- Alterando o plano de fundo para #172554 -->
+    @foreach ($notes as $note)
+    <a href="{{route('tarefa', ['id' => $note->id])}}">
+        <div class="m-2">
+            <div class="block rounded-lg bg-gray-200 shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface">
+                <h5 class="border-b-2 border-neutral-100 px-6 py-3 text-xl font-medium leading-tight dark:border-white/10">
+                    Atividade
+                </h5>
+                <div class="p-6">
+                    <h5 class="mb-2 text-xl font-medium leading-tight">
+                        {{$note->title}}
+                    </h5>
+                    <p class="mb-4 text-base">
+                        {{$note->description}}
+                    </p>
+                    <button type="button" href="#" class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong" data-twe-ripple-init data-twe-ripple-color="light">
+                        Go somewhere
+                    </button>
+                </div>
             </div>
         </div>
-        @endforeach
-    </div>
 
-    @include('layouts.footer')
-    <!-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> -->
 
-</body>
+    </a>
+    @endforeach
+</div>
+
+
+@include('layouts.footer')
+<!-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> -->
+
+
 
 </html>

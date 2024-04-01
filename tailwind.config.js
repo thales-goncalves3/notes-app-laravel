@@ -9,15 +9,10 @@ module.exports = {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    colors: {
-      gray: colors.red,
-      blue: colors.red,
-      red: colors.red,
-      pink: colors.red,
-    },
+
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+
+      'roboto': ['Roboto', 'sans-serif'],
     },
     extend: {
       spacing: {
