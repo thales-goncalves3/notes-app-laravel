@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 
 <head>
     @include('layouts.head')
 </head>
 
-<body style="display: grid; grid-template-rows: auto 1fr auto; min-height: 100vh;">
+<body class="flex flex-col bg-gray-300 ">
     @include('layouts.header')
 
-    <div class="bg-gray-300 grid grid-cols-2  p-4">
+    <div class="grid grid-cols-3 p-4">
         @foreach ($notes as $note)
-        <a href="{{ route('tarefa', ['id' => $note->id]) }}">
-            <div class="m-2">
+        <div class="m-2">
+            <a href="{{ route('tarefa', ['id' => $note->id]) }}">
                 <div class="block rounded-lg bg-white shadow-lg dark:bg-gray-800 text-gray-800 dark:text-white">
                     <h5 class="border-b-2 border-gray-200 px-6 py-3 text-xl font-medium leading-tight dark:border-gray-700">
                         Atividade
@@ -40,8 +40,8 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
         @endforeach
     </div>
 
