@@ -22,6 +22,8 @@ Route::get('/nova-tarefa', function () {
 
 Route::put('tarefa/{id}', [NotesController::class, 'updateNote'])->name('update.note');
 
+Route::put('/{id}', [NotesController::class, 'finishNote'])->name('finish.note');
+
 Route::delete('tarefa/{id}', [NotesController::class, 'deleteNote'])->name('delete.note');
 
 Route::get('tarefa/{id}', [NotesController::class, 'findNoteById'])->name('tarefa');

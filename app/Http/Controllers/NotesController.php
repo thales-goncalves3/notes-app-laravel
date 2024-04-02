@@ -9,7 +9,8 @@ class NotesController extends Controller
 {
     //
 
-    public function index(){
+    public function index()
+    {
         $notes = Notes::all();
 
         // $notes = Notes::where('status', '=', 0)->get();
@@ -17,7 +18,8 @@ class NotesController extends Controller
         return view('dashboard', ['notes' => $notes]);
     }
 
-    public function insertNote(Request $request){
+    public function insertNote(Request $request)
+    {
         $note = new Notes;
 
         $note->title = $request->title;
@@ -30,13 +32,15 @@ class NotesController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function findNoteById($id){
+    public function findNoteById($id)
+    {
         $note = Notes::find($id);
 
         return view('tarefa', ['note' => $note]);
     }
 
-    public function updateNote(Request $request, $id){
+    public function updateNote(Request $request, $id)
+    {
         $note = Notes::find($id);
 
         $note->title = $request->title;
@@ -47,10 +51,22 @@ class NotesController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function deleteNote($id){
+    public function deleteNote($id)
+    {
         $note = Notes::find($id);
 
         $note->delete();
+
+        return redirect()->route('dashboard');
+    }
+
+    public function finishNote($id)
+    {
+        $note = Notes::find($id);
+
+        $note->status = !$note->status;
+
+        $note->save();
 
         return redirect()->route('dashboard');
     }
