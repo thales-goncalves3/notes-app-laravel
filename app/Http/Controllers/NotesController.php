@@ -70,4 +70,20 @@ class NotesController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function showResume()
+    {
+
+
+
+        $finished = Notes::where('status', 1)->count();
+        $notFinished = Notes::where('status', 0)->count();
+
+        $obj = [
+            'finalizada' => $finished,
+            'emAndamento' => $notFinished
+        ];
+
+        return view('estatistica', ['resume' => $obj]);
+    }
 }

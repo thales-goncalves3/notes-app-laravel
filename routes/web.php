@@ -29,3 +29,5 @@ Route::delete('tarefa/{id}', [NotesController::class, 'deleteNote'])->name('dele
 Route::get('tarefa/{id}', [NotesController::class, 'findNoteById'])->name('tarefa');
 
 Route::post('/', [NotesController::class, 'insertNote'])->name('dashboard');
+
+Route::get('resume', [NotesController::class, 'showResume'])->name('resume');
